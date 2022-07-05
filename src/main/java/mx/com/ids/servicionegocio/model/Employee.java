@@ -73,11 +73,9 @@ public class Employee implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Employee [Id = " + getId() + ", Surname = " + getSurname() + ", Firstname = " + getFirstname() + ", Country = " + getCountry()
-				+ ", Language = " + getLanguage() + "]"; 
+		return "Employee [id = " + id + ", surname = " + surname + ", firstname = " + firstname + ", country = " + country
+				+ ", language = " + language + "]";
 	}
-
-	
 
 	
 

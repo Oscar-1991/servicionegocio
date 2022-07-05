@@ -24,12 +24,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="em:${employees}">
+				<tr th:each="em:${employee}">
 					<th scope="row" th:text="${em.id}"></th>
 					<td th:text="${em.surname}"></td>
 					<td th:text="${em.fistname}"></td>	
-					<td th:text="${em.idCountry}"></td>
-					<td th:text="${em.idLanguage}"></td>	
+					<td th:text="${em.country}"></td>
+					<td th:text="${em.language}"></td>	
 					<td>
 						<a class="btn btn-success btn-sm" th:href="@{/views/employee/edit/} + ${em.id}"
 							th:text="'Editar'" title="Editar Registro">

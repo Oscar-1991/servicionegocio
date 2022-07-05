@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,18 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import mx.com.ids.servicionegocio.model.Employee;
-import mx.com.ids.servicionegocio.service.EmployeeService;
+import mx.com.ids.servicionegocio.model.Airport;
+import mx.com.ids.servicionegocio.service.AirportService;
 
 @Controller
-@RequestMapping("/views/employee")
-public class EmployeeController {
+@RequestMapping("/views/airport")
+public class AirportController {
 	@Autowired
-	private EmployeeService service;
+	private AirportService service;
 	
-	@GetMapping("/employees")
+	@GetMapping("/airports")
 	public ResponseEntity<?> getAll(){
-		List<Employee> lista = service.getAll();
+		List<Airport> lista = service.getAll();
 		if (lista.isEmpty()) {
 			return new ResponseEntity<>(null , HttpStatus.BAD_REQUEST);
 		}
@@ -34,31 +33,19 @@ public class EmployeeController {
 	}
 		
 	@GetMapping("/detalle_employee/{id}")
-	public ResponseEntity<Employee> getById(@PathVariable long id){
-		Optional<Employee> emp = service.getById(id);
-		return ResponseEntity.ok().body(emp.get());
+	public ResponseEntity<Airport> getById(@PathVariable long id){
+		Optional<Airport> air = service.getById(id);
+		return ResponseEntity.ok().body(air.get());
 	}
 	
-	@PostMapping("/newEmployee")
-	public ResponseEntity<Employee> save(@RequestBody Employee emp){
-		return ResponseEntity.ok().body(service.save(emp));
+	@PostMapping("/newAirport")
+	public ResponseEntity<Airport> save(@RequestBody Airport air){
+		return ResponseEntity.ok().body(service.save(air));
 	}
 	
-	@DeleteMapping("/delete_employee/{id}")
+	@DeleteMapping("/delete_airport/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		service.delete(id);
 		return HttpStatus.OK;
-	}
-	
-	
-	
-	///-----------------------------------------
-	
-	@GetMapping("/")
-	public String getAll(Model model) {
-		List<Employee> lista = service.getAll();
-		model.addAttribute("titulo", "Lista de Employees");
-		model.addAttribute("employee", lista);
-		return "/views/employee/listar";
 	}
 }

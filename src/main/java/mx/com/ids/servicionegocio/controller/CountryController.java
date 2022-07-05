@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mx.com.ids.servicionegocio.model.Country;
-import mx.com.ids.servicionegocio.model.Employee;
 import mx.com.ids.servicionegocio.service.CountryService;
 
 @Controller
