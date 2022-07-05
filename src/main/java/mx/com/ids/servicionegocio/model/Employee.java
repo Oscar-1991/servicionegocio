@@ -24,6 +24,13 @@ public class Employee implements Serializable{
 	@Column(name = "firstname")
 	private String firstname;
 
+	@Column(name = "idCountry")
+	private long country;
+	
+	@Column(name = "idLanguage")
+	private long language;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -48,10 +55,29 @@ public class Employee implements Serializable{
 		this.firstname = firstname;
 	}
 
+	public long getCountry() {
+		return country;
+	}
+
+	public void setCountry(long country) {
+		this.country = country;
+	}
+
+	public long getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(long language) {
+		this.language = language;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [Id = " + getId() + ", Surname = " + getSurname() + ", Firstname = " + getFirstname() + "]";
+		return "Employee [Id = " + getId() + ", Surname = " + getSurname() + ", Firstname = " + getFirstname() + ", Country = " + getCountry()
+				+ ", Language = " + getLanguage() + "]"; 
 	}
+
+	
 
 	
 

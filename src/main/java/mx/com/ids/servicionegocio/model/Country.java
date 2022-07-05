@@ -23,6 +23,9 @@ public class Country implements Serializable{
 	
 	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "idAirport")
+	private Long airport;
 
 	public long getId() {
 		return id;
@@ -48,10 +51,21 @@ public class Country implements Serializable{
 		this.name = name;
 	}
 
+	
+	public Long getAirport() {
+		return airport;
+	}
+
+	public void setAirport(Long airport) {
+		this.airport = airport;
+	}
+
 	@Override
 	public String toString() {
-		return "Country [Id = " + getId() + ", Code = " + getCode() + ", Name = " + getName() + "]";
+		return "Country [Id = " + getId() + ", Code = " + getCode() + ", Name = " + getName() + ", Airport = " + getAirport() + "]";
 	}
+
+	
 	
 	
 

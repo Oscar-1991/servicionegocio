@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,38 +14,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mx.com.ids.servicionegocio.model.Country;
 import mx.com.ids.servicionegocio.model.Employee;
-import mx.com.ids.servicionegocio.service.EmployeeService;
+import mx.com.ids.servicionegocio.service.CountryService;
 
 @Controller
-@RequestMapping("/views/employee")
-public class EmployeeController {
+@RequestMapping("/views/contry")
+public class CountryController {
 	@Autowired
-	private EmployeeService service;
+	private CountryService service;
 	
-	@GetMapping("/employees")
+	@GetMapping("/countries")
 	public ResponseEntity<?> getAll(){
-		List<Employee> lista = service.getAll();
-		if (lista.isEmpty()) {
-			return new ResponseEntity<>(null , HttpStatus.BAD_REQUEST);
+		List<Country> lista = service.getAll();
+		if(lista.isEmpty()) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 		return ResponseEntity.ok().body(service.getAll());
 	}
-		
-	@GetMapping("/detalle_employee/{id}")
-	public ResponseEntity<Employee> getById(@PathVariable long id){
-		Optional<Employee> emp = service.getById(id);
-		return ResponseEntity.ok().body(emp.get());
+	
+	@GetMapping("/detalle_country/{id}")
+	public ResponseEntity<Country> getById(@PathVariable long id){
+		Optional<Country> coun = service.getById(id);
+		return ResponseEntity.ok().body(coun.get());
 	}
 	
-	@PostMapping("/newEmployee")
-	public ResponseEntity<Employee> save(@RequestBody Employee emp){
-		return ResponseEntity.ok().body(service.save(emp));
+	@PostMapping("/newCountry")
+	public ResponseEntity<Country> save(@RequestBody Country cou){
+		return ResponseEntity.ok().body(service.save(cou));
 	}
 	
-	@DeleteMapping("/delete_employee/{id}")
+	@DeleteMapping("/delete_country/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		service.delete(id);
 		return HttpStatus.OK;
 	}
+	
 }
