@@ -1,4 +1,4 @@
-package mx.com.ids.negocio.servicionegocio;
+package mx.com.ids.servicionegocio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

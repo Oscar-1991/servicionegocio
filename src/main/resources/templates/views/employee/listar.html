@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">		
+		<h1 th:text="${titulo}"></h1>		
+	</div>
+	
+	<div class="container">
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Surname</th>
+					<th scope="col">Firstname</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="em:${employees}">
+					<th scope="row" th:text="${em.id}"></th>
+					<td th:text="${em.surname}"></td>
+					<td th:text="${em.fistname}"></td>	
+					<td>
+						<a class="btn btn-success btn-sm" th:href="@{/views/employee/edit/} + ${em.id}"
+							th:text="'Editar'" title="Editar Registro">
+						</a>
+					</td>	
+					<td>
+						<a class="btn btn-danger btn-sm" th:href="@{/views/employee/delete/} + ${em.id}"
+							th:text="'Eliminar'" title="Eliminar Registro"
+							onclick="return confirm('Esta seguro de eliminar el registro?');">
+						</a>
+					</td>					
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>
