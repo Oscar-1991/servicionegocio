@@ -18,7 +18,7 @@ import mx.com.ids.servicionegocio.model.Country;
 import mx.com.ids.servicionegocio.service.CountryService;
 
 @Controller
-@RequestMapping("/apiv1/contries")
+@RequestMapping("/apiv1/countries")
 public class CountryController {
 	@Autowired
 	private CountryService service;
