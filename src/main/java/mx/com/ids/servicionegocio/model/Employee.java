@@ -15,7 +15,7 @@ public class Employee implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(name = "surname")
@@ -30,7 +30,7 @@ public class Employee implements Serializable{
 	@Column(name = "language")
 	private long language;
 	
-	
+
 	public long getId() {
 		return id;
 	}

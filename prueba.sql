@@ -21,7 +21,7 @@ create table Country(
 	`id` bigint not null auto_increment,
     `code` varchar(50),
     `name` varchar(50),
-    `idAirport` bigint,
+    `airport` bigint,
     primary key(`id`),
     foreign key(idAirport) references Airport(id)
 );
@@ -31,11 +31,11 @@ create table Employee(
 	`id` bigint not null auto_increment,
     `surname` varchar(50),
     `firstname` varchar(50),
-    `idCountry` bigint,
-    `idLanguage` bigint,
+    `country` bigint,
+    `language` bigint,
     primary key(`id`),
-    foreign key(idCountry) references Country(id),
-    foreign key(idLanguage) references Languages(id)
+    foreign key(country) references Country(id),
+    foreign key(language) references Languages(id)
 );
 
 select * from Airport;
