@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import mx.com.ids.servicionegocio.model.Language;
+import mx.com.ids.servicionegocio.model.Languages;
 import mx.com.ids.servicionegocio.service.LanguageService;
 
 @Controller
-@RequestMapping("/views/language")
+@RequestMapping("/apiv1/languages")
 public class LanguageController {
 	@Autowired
 	private LanguageService service;
 	
-	@GetMapping("/languages")
+	@GetMapping("/all")
 	public ResponseEntity<?> getAll(){
-		List<Language> lista = service.getAll();
+		List<Languages> lista = service.getAll();
 		if (lista.isEmpty()) {
 			return new ResponseEntity<>(null , HttpStatus.BAD_REQUEST);
 		}
 		return ResponseEntity.ok().body(service.getAll());
 	}
 		
-	@GetMapping("/detalle_language/{id}")
-	public ResponseEntity<Language> getById(@PathVariable long id){
-		Optional<Language> lan = service.getById(id);
+	@GetMapping("/detalle/{id}")
+	public ResponseEntity<Languages> getById(@PathVariable long id){
+		Optional<Languages> lan = service.getById(id);
 		return ResponseEntity.ok().body(lan.get());
 	}
 	
-	@PostMapping("/newLanguage")
-	public ResponseEntity<Language> save(@RequestBody Language lan){
+	@PostMapping("/add")
+	public ResponseEntity<Languages> save(@RequestBody Languages lan){
 		return ResponseEntity.ok().body(service.save(lan));
 	}
 	
-	@DeleteMapping("/delete_language/{id}")
+	@DeleteMapping("/delete/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		service.delete(id);
 		return HttpStatus.OK;

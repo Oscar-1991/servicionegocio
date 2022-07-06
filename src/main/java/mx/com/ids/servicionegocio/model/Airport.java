@@ -37,10 +37,5 @@ public class Airport implements Serializable{
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Airport [Id = " + getId() + ", Name = " + getName() + "]";
-	}
-	
 	
 }

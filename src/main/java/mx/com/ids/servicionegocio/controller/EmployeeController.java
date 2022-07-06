@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +18,12 @@ import mx.com.ids.servicionegocio.model.Employee;
 import mx.com.ids.servicionegocio.service.EmployeeService;
 
 @Controller
-@RequestMapping("/views/employee")
+@RequestMapping("/apiv1/employees")
 public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
 	
-	@GetMapping("/employees")
+	@GetMapping("/all")
 	public ResponseEntity<?> getAll(){
 		List<Employee> lista = service.getAll();
 		if (lista.isEmpty()) {
@@ -33,32 +32,24 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(service.getAll());
 	}
 		
-	@GetMapping("/detalle_employee/{id}")
+	@GetMapping("/detalle/{id}")
 	public ResponseEntity<Employee> getById(@PathVariable long id){
 		Optional<Employee> emp = service.getById(id);
 		return ResponseEntity.ok().body(emp.get());
 	}
 	
-	@PostMapping("/newEmployee")
+	@PostMapping("/add")
 	public ResponseEntity<Employee> save(@RequestBody Employee emp){
-		return ResponseEntity.ok().body(service.save(emp));
+		return ResponseEntity.ok().body(this.service.save(emp));
 	}
 	
-	@DeleteMapping("/delete_employee/{id}")
+	@DeleteMapping("/delete/{id}")
 	public HttpStatus delete(@PathVariable long id) {
-		service.delete(id);
-		return HttpStatus.OK;
-	}
-	
-	
-	
-	///-----------------------------------------
-	
-	@GetMapping("/")
-	public String getAll(Model model) {
-		List<Employee> lista = service.getAll();
-		model.addAttribute("titulo", "Lista de Employees");
-		model.addAttribute("employee", lista);
-		return "/views/employee/listar";
+		try {
+			service.delete(id);
+			return HttpStatus.OK;
+		} catch (Exception e) {
+			return HttpStatus.BAD_REQUEST;
+		}		
 	}
 }

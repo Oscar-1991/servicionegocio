@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mx.com.ids.servicionegocio.model.Language;
+import mx.com.ids.servicionegocio.model.Languages;
 import mx.com.ids.servicionegocio.repository.LanguageRepository;
 
 @Service
@@ -22,19 +22,19 @@ public class LanguageServiceImpl implements LanguageService{
     }
 
     @Override
-    public List<Language> getAll() {
+    public List<Languages> getAll() {
         // TODO Auto-generated method stub
         return language.findAll();
     }
 
     @Override
-    public Optional<Language> getById(Long id) {
+    public Optional<Languages> getById(Long id) {
         // TODO Auto-generated method stub
         return language.findById(id);
     }
 
     @Override
-    public Language save(Language l) {
+    public Languages save(Languages l) {
         // TODO Auto-generated method stub
         return language.save(l);
     }

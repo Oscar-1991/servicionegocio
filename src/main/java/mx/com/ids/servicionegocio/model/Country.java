@@ -24,7 +24,7 @@ public class Country implements Serializable{
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "idAirport")
+	@Column(name = "airport")
 	private Long airport;
 
 	public long getId() {
@@ -58,11 +58,6 @@ public class Country implements Serializable{
 
 	public void setAirport(Long airport) {
 		this.airport = airport;
-	}
-
-	@Override
-	public String toString() {
-		return "Country [Id = " + getId() + ", Code = " + getCode() + ", Name = " + getName() + ", Airport = " + getAirport() + "]";
 	}
 
 	

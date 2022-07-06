@@ -18,12 +18,12 @@ import mx.com.ids.servicionegocio.model.Airport;
 import mx.com.ids.servicionegocio.service.AirportService;
 
 @Controller
-@RequestMapping("/views/airport")
+@RequestMapping("/apiv1/airports")
 public class AirportController {
 	@Autowired
 	private AirportService service;
 	
-	@GetMapping("/airports")
+	@GetMapping("/all")
 	public ResponseEntity<?> getAll(){
 		List<Airport> lista = service.getAll();
 		if (lista.isEmpty()) {
@@ -32,18 +32,18 @@ public class AirportController {
 		return ResponseEntity.ok().body(service.getAll());
 	}
 		
-	@GetMapping("/detalle_employee/{id}")
+	@GetMapping("/detalle/{id}")
 	public ResponseEntity<Airport> getById(@PathVariable long id){
 		Optional<Airport> air = service.getById(id);
 		return ResponseEntity.ok().body(air.get());
 	}
 	
-	@PostMapping("/newAirport")
+	@PostMapping("/add")
 	public ResponseEntity<Airport> save(@RequestBody Airport air){
 		return ResponseEntity.ok().body(service.save(air));
 	}
 	
-	@DeleteMapping("/delete_airport/{id}")
+	@DeleteMapping("/delete/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		service.delete(id);
 		return HttpStatus.OK;

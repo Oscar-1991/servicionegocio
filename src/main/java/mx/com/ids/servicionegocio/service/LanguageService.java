@@ -3,14 +3,14 @@ package mx.com.ids.servicionegocio.service;
 import java.util.List;
 import java.util.Optional;
 
-import mx.com.ids.servicionegocio.model.Language;
+import mx.com.ids.servicionegocio.model.Languages;
 
 public interface LanguageService {
-    Optional<Language> getById(Long id);
+    Optional<Languages> getById(Long id);
 
-    List<Language> getAll();
+    List<Languages> getAll();
 
     void delete(Long id);
 
-    Language save(Language l);
+    Languages save(Languages l);
 }

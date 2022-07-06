@@ -18,12 +18,12 @@ import mx.com.ids.servicionegocio.model.Country;
 import mx.com.ids.servicionegocio.service.CountryService;
 
 @Controller
-@RequestMapping("/views/contry")
+@RequestMapping("/apiv1/contries")
 public class CountryController {
 	@Autowired
 	private CountryService service;
 	
-	@GetMapping("/countries")
+	@GetMapping("/all")
 	public ResponseEntity<?> getAll(){
 		List<Country> lista = service.getAll();
 		if(lista.isEmpty()) {
@@ -32,18 +32,18 @@ public class CountryController {
 		return ResponseEntity.ok().body(service.getAll());
 	}
 	
-	@GetMapping("/detalle_country/{id}")
+	@GetMapping("/detalle/{id}")
 	public ResponseEntity<Country> getById(@PathVariable long id){
 		Optional<Country> coun = service.getById(id);
 		return ResponseEntity.ok().body(coun.get());
 	}
 	
-	@PostMapping("/newCountry")
+	@PostMapping("/add")
 	public ResponseEntity<Country> save(@RequestBody Country cou){
 		return ResponseEntity.ok().body(service.save(cou));
 	}
 	
-	@DeleteMapping("/delete_country/{id}")
+	@DeleteMapping("/delete/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		service.delete(id);
 		return HttpStatus.OK;

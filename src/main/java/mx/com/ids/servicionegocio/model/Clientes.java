@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Employee")
-public class Employee implements Serializable{
+@Table(name = "Clientes")
+public class Clientes implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,12 +25,14 @@ public class Employee implements Serializable{
 	private String firstname;
 
 	@Column(name = "country")
-	private long country;
+	private String country;
 	
 	@Column(name = "language")
-	private long language;
+	private String language;
 	
-	
+	@Column(name = "airport")
+	private String airport;
+
 	public long getId() {
 		return id;
 	}
@@ -55,28 +57,31 @@ public class Employee implements Serializable{
 		this.firstname = firstname;
 	}
 
-	public long getCountry() {
+	public String getCountry() {
 		return country;
 	}
 
-	public void setCountry(long country) {
+	public void setCountry(String country) {
 		this.country = country;
 	}
 
-	public long getLanguage() {
+	public String getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(long language) {
+	public void setLanguage(String language) {
 		this.language = language;
 	}
 
-	
+	public String getAirport() {
+		return airport;
+	}
+
+	public void setAirport(String airport) {
+		this.airport = airport;
+	}
 
 	
-
 	
-
 	
-
 }

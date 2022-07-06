@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Language")
-public class Language implements Serializable{
+@Table(name = "Languages")
+public class Languages implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -48,10 +48,7 @@ public class Language implements Serializable{
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Language [Id = " + getId() + ", Code = " + getCode() + ", Name = " + getName() + "]";
-	}
+	
 	
 	
 }
